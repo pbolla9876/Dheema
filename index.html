@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey | Dheema</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --text-gold: #d4af37;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Music Toggle */
+        #music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 1px solid var(--text-gold);
+        }
+
+        /* Container for all clips */
+        .story-container {
+            position: relative;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .clip-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            opacity: 0.4;
+            transition: transform 2s ease-out;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h2 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: var(--text-gold); margin: 0; }
+        p { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; }
+
+        /* Rain Effect Overlay */
+        .rain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            background: url('https://raw.githubusercontent.com/prakhyath-scripts/assets/main/rain.gif'); /* You can find a transparent rain gif */
+            opacity: 0.15;
+            display: none; /* Triggered at Clip 2 */
+        }
+
+        /* Final Reveal Image */
+        #final-face {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--text-gold);
+            display: none;
+            margin-top: 20px;
+            box-shadow: 0 0 30px var(--text-gold);
+        }
+
+        /* Hands Animation */
+        .bridge-hands {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+            font-size: 4rem;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="music-control">🎵</div>
+<div class="rain-overlay" id="rain"></div>
+<audio id="bg-audio" src="assets/dheema.mp3"></audio>
+
+<div class="story-container">
+
+    <section id="clip1">
+        <div class="clip-layer" style="background-image: url('assets/clip1_bedroom.jpg');"></div>
+        <div class="content">
+            <h2>The Decision</h2>
+            <p>"Goodnight padduko" annavu... kani ee idiot ki nidra raledu. <br> I grabbed my bag, and the road to Valpo began.</p>
+        </div>
+    </section>
+
+    <section id="clip2">
+        <div class="clip-layer" style="background-image: url('assets/clip2_drive.jpg');"></div>
+        <div class="content">
+            <h2>700 Miles</h2>
+            <p>Rain hitting the glass, GPS glowing 5:13 AM arrival. <br> Atlanta to Indiana—just to see you.</p>
+        </div>
+    </section>
+
+    <section id="clip3">
+        <div class="clip-layer" style="background-image: url('assets/clip3_starbucks.jpg');"></div>
+        <div class="content">
+            <h2 style="font-size: 5rem;">05:13 AM</h2>
+            <p>The car was silent. The coffee was steaming. <br> Waiting for the second you'd wake up.</p>
+        </div>
+    </section>
+
+    <section id="clip4">
+        <div class="clip-layer" style="background-image: url('assets/clip4_door.jpg');"></div>
+        <div class="content">
+            <h2>The Reveal</h2>
+            <p>The main door opened... and the drizzle felt like a movie. <br> You walked out, and the world stopped.</p>
+        </div>
+    </section>
+
+    <section id="clip5">
+        <div class="clip-layer" style="background-image: url('assets/image_0.jpg');"></div>
+        <div class="content">
+            <h2>Frozen</h2>
+            <p>My brain was analyzing... is this a dream? <br> I couldn't even move. Seeing you in person hit different.</p>
+        </div>
+    </section>
+
+    <section id="clip6">
+        <div class="clip-layer" style="background-image: url('assets/clip6_hands.jpg');"></div>
+        <div class="content">
+            <h2>First Touch</h2>
+            <p>The glass window rolled down. Our eyes met. <br> "I'm really here," I said. The coffee was finally yours.</p>
+        </div>
+    </section>
+
+    <section id="clip7">
+        <div class="clip-layer" style="background-image: url('assets/clip7_silence.jpg');"></div>
+        <div class="content">
+            <h2>The Silence</h2>
+            <p>Saturday night. Downtown Valpo was cold. <br> After the 'No', that 15-minute drive felt like a lifetime.</p>
+        </div>
+    </section>
+
+    <section id="clip8">
+        <div class="clip-layer" style="background-image: url('assets/clip8_bridge.jpg');"></div>
+        <div class="content">
+            <h2>Dheema Dheema...</h2>
+            <div class="bridge-hands">
+                <span id="left-hand">🫱</span>
+                <span id="right-hand">🫲</span>
+            </div>
+            <p id="final-text">Finally, on that bridge, our hands found each other.</p>
+            <img src="assets/her_face.jpg" id="final-face" alt="Jhansy">
+        </div>
+    </section>
+
+</div>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+    const audio = document.getElementById('bg-audio');
+    const rain = document.getElementById('rain');
+
+    // Audio Control
+    document.getElementById('music-control').addEventListener('click', () => {
+        if (audio.paused) { audio.play(); } else { audio.pause(); }
+    });
+
+    // 1. Initial Parallax for all Layers
+    gsap.utils.toArray("section").forEach((section, i) => {
+        const layer = section.querySelector(".clip-layer");
+        gsap.to(layer, {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: section,
+                scrub: true
+            }
+        });
+    });
+
+    // 2. Trigger Rain at Clip 2
+    ScrollTrigger.create({
+        trigger: "#clip2",
+        onEnter: () => rain.style.display = "block",
+        onLeaveBack: () => rain.style.display = "none"
+    });
+
+    // 3. Freeze Moment Zoom (Clip 5)
+    gsap.to("#clip5 .clip-layer", {
+        scale: 1.5,
+        scrollTrigger: {
+            trigger: "#clip5",
+            scrub: true
+        }
+    });
+
+    // 4. The Bridge Hands Climax (Clip 8)
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#clip8",
+            start: "top center",
+            end: "bottom center",
+            scrub: 1
+        }
+    });
+
+    tl.to("#left-hand", { x: 80 })
+      .to("#right-hand", { x: -80 }, "<")
+      .to("#final-text", { opacity: 0, duration: 0.2 })
+      .call(() => {
+          // Trigger the Real Face Reveal
+          document.getElementById('final-face').style.display = "block";
+          audio.volume = 1.0; // Crank the chorus
+      })
+      .from("#final-face", { scale: 0, opacity: 0, duration: 1 });
+
+</script>
+</body>
+</html>
